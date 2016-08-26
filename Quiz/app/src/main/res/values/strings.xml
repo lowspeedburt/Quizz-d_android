@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Quizz\'d</string>
+    <string name="question_1">Question 1: What was King David\'s youngest son\'s name?</string>
+    <string name="answer_here">Answer here</string>
+    <string name="question_2">Question 2: What kind of bread is eaten during Passover?</string>
+    <string name="question_3">Question 3: What was Moses\' Father in Law\'s name?</string>
+    <string name="question_4">Question 4: This \"D\" was thrown in a Lion\'s Den?</string>
+    <string name="answer_here_2">Answer Here</string>
+    <string name="question_two_answer_1">Challah Bread</string>
+    <string name="question_two_answer_2">Unleavened Bread</string>
+    <string name="question_two_answer_3">Holy Bread, Mingled with oil</string>
+    <string name="question_two_answer_4">HardDough Bread</string>
+    <string name="question_three_answer_1">Hobab</string>
+    <string name="question_three_answer_2">Jethro</string>
+    <string name="question_three_answer_3">Ramesses</string>
+    <string name="question_three_answer_4">Aaron</string>
+    <string name="name_edit_text_view">Enter Name Here</string>
+    <string name="submit_button">Submit</string>
+</resources>
