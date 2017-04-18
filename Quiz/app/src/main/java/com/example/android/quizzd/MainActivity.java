@@ -10,10 +10,13 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    String reward_for_right_answer_two = "";
-    String reward_for_right_answer_one = "";
-    String reward_for_right_answer_three = "";
-    String reward_for_right_answer_four = "";
+    private String _checkForRightAnswerQuestionOne = "Question One is ";
+    private String _checkForRightAnswerQuestionTwo = "Question Two is ";
+    private String _checkForRightAnswerQuestionThree = "Question Three is ";
+    private String _checkForRightAnswerQuestionFour = "Question Four is ";
+    private final String _CORRECT = "CORRECT";
+    private final String _WRONG = "WRONG";
+    private String _answer = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,73 +29,90 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void submitResults(View view) {
-
-
         EditText nameEditTextView = (EditText) findViewById(R.id.name_edit_text_view);
         String customerName = nameEditTextView.getText().toString();
 
-        EditText answerOneEditTextView = (EditText) findViewById(R.id.answer_one_edit_text_view);
-        String receivedAnswerOne = answerOneEditTextView.getText().toString();
-        //answer for question one is Solomon.
-        String ans1 = "Solomon";
+        String results = customerName
+                + "\n" + questionOne()
+                + "\n" + questionTwo()
+                + "\n" + questionThree()
+                + "\n" + questionFour();
+
+        printResultsToScreen(results);
+
+    }
+
+    public String questionOne() {
+        EditText answerOneEditTextView =
+                (EditText) findViewById(R.id.answer_one_edit_text_view);
+        String receivedAnswerOne =
+                answerOneEditTextView.getText().toString();
+        String ans1 = setAnswer("Solomon"); //answer for question one.
+
         if (receivedAnswerOne.equalsIgnoreCase(ans1)) {
-            reward_for_right_answer_one += "Question One is Correct";
-        }else {
-            reward_for_right_answer_one += "Question One is WRONG!";
+            return _checkForRightAnswerQuestionOne + _CORRECT;
         }
+        return _checkForRightAnswerQuestionOne + _WRONG;
+    }
 
-
-        RadioButton radio2 = (RadioButton) findViewById(R.id.radio_button_view_two);
-        // answer for Question two is Radio button two.
+    public String questionTwo() {
+        RadioButton radio2 =
+                (RadioButton) findViewById(R.id.radio_button_view_two);
         boolean checkedRadio2 = radio2.isChecked();
+
+        // Checks if answer for Question two is correct or not.
         if (checkedRadio2) {
-            reward_for_right_answer_two += "Question Two is Correct";
+            _checkForRightAnswerQuestionTwo = "Question Two is Correct";
         }else {
-            reward_for_right_answer_two += "Question Two is WRONG!";
+            _checkForRightAnswerQuestionTwo = "Question Two is WRONG!";
         }
+        return _checkForRightAnswerQuestionTwo;
+    }
 
-
-        CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkbox_view_one);
-        //answer for question three is checkbox one and two.
+    public String questionThree() {
+        CheckBox checkBox1 =
+                (CheckBox) findViewById(R.id.checkbox_view_one);
+        CheckBox checkBox2 =
+                (CheckBox) findViewById(R.id.checkbox_view_two);
         boolean checkedAnswerOne = checkBox1.isChecked();
-        CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkbox_view_two);
         boolean checkedAnswerTwo = checkBox2.isChecked();
+
+        // The question is only right if both checkboxes are checked.
         if ((checkedAnswerOne) && (checkedAnswerTwo)) {
-            reward_for_right_answer_three += "Question Three is Correct";
+            _checkForRightAnswerQuestionThree = "Question Three is Correct";
         }else {
-            reward_for_right_answer_three += "Question Three is WRONG!";
+            _checkForRightAnswerQuestionThree = "Question Three is WRONG!";
         }
+        return _checkForRightAnswerQuestionThree;
+    }
 
+    public String questionFour() {
+        EditText answerFourEditTextView =
+                (EditText) findViewById(R.id.answer_four_edit_text_view);
+        String receivedAnswerFour =
+                answerFourEditTextView.getText().toString();
+        String ans4 = setAnswer("Daniel"); //answer for question four.
 
-        EditText answerFourEditTextView = (EditText) findViewById(R.id.answer_four_edit_text_view);
-        String receivedAnswerFour = answerFourEditTextView.getText().toString();
-        //answer for question four is Daniel
-        String ans4 = "Daniel";
         if (receivedAnswerFour.equalsIgnoreCase(ans4)) {
-            reward_for_right_answer_four += "Question Four is correct";
+            _checkForRightAnswerQuestionFour = "Question Four is correct";
         }else {
-            reward_for_right_answer_four += "Question Four is WRONG!";
+            _checkForRightAnswerQuestionFour = "Question Four is WRONG!";
         }
+        return _checkForRightAnswerQuestionFour;
+    }
 
-        if (receivedAnswerOne.isEmpty()){
+    public String setAnswer( String ans) {
+        this._answer = ans;
+        return _answer;
+    }
 
-        }
-
-
-        String results = customerName + "\n" + reward_for_right_answer_one + "\n"
-                + reward_for_right_answer_four + "\n"
-                + reward_for_right_answer_three + "\n" + reward_for_right_answer_two;
-
-
+    public void printResultsToScreen(String results) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_LONG;
-        Toast toast = Toast.makeText(context, results, duration);
+        Toast toast =
+                Toast.makeText(context, results, duration);
         toast.show();
-
-        for (int i = 0; i<5; i++){
-            toast.setText(results);
-        }
-
+        toast.setText(results);
     }
 
 
