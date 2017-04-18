@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    // TODO refactor strings for one string to hold all answers and modify in specific methods.
     private String _checkForRightAnswerQuestionOne = "Question One is ";
     private String _checkForRightAnswerQuestionTwo = "Question Two is ";
     private String _checkForRightAnswerQuestionThree = "Question Three is ";
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 + "\n" + questionFour();
 
         printResultsToScreen(results);
-
     }
 
     public String questionOne() {
@@ -62,11 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Checks if answer for Question two is correct or not.
         if (checkedRadio2) {
-            _checkForRightAnswerQuestionTwo = "Question Two is Correct";
-        }else {
-            _checkForRightAnswerQuestionTwo = "Question Two is WRONG!";
+            return _checkForRightAnswerQuestionTwo + _CORRECT;
         }
-        return _checkForRightAnswerQuestionTwo;
+        return _checkForRightAnswerQuestionTwo + _WRONG;
     }
 
     public String questionThree() {
@@ -79,11 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
         // The question is only right if both checkboxes are checked.
         if ((checkedAnswerOne) && (checkedAnswerTwo)) {
-            _checkForRightAnswerQuestionThree = "Question Three is Correct";
-        }else {
-            _checkForRightAnswerQuestionThree = "Question Three is WRONG!";
+            return _checkForRightAnswerQuestionThree + _CORRECT;
         }
-        return _checkForRightAnswerQuestionThree;
+        return _checkForRightAnswerQuestionThree + _WRONG;
     }
 
     public String questionFour() {
@@ -94,11 +90,9 @@ public class MainActivity extends AppCompatActivity {
         String ans4 = setAnswer("Daniel"); //answer for question four.
 
         if (receivedAnswerFour.equalsIgnoreCase(ans4)) {
-            _checkForRightAnswerQuestionFour = "Question Four is correct";
-        }else {
-            _checkForRightAnswerQuestionFour = "Question Four is WRONG!";
+            return _checkForRightAnswerQuestionThree + _CORRECT;
         }
-        return _checkForRightAnswerQuestionFour;
+        return _checkForRightAnswerQuestionFour + _WRONG;
     }
 
     public String setAnswer( String ans) {
@@ -114,6 +108,4 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
         toast.setText(results);
     }
-
-
 }
