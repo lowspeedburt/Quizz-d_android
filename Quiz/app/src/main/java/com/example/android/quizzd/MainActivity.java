@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
      * submits quiz results
      */
 
-    public void submitResults(View view) {
+    protected void submitResults(View view) {
         EditText nameEditTextView = (EditText) findViewById(R.id.name_edit_text_view);
         String customerName = nameEditTextView.getText().toString();
         printResultsToScreen(customerName
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 + "\n" + questionFour());
     }
 
-    public String questionOne() {
+    protected String questionOne() {
         EditText answerOneEditTextView =
                 (EditText) findViewById(R.id.answer_one_edit_text_view);
         String receivedAnswerOne =
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         return _checkForRightAnswerQuestionOne + _WRONG;
     }
 
-    public String questionTwo() {
+    protected String questionTwo() {
         RadioButton radio2 =
                 (RadioButton) findViewById(R.id.radio_button_view_two);
         boolean checkedRadio2 = radio2.isChecked();
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         return _checkForRightAnswerQuestionTwo + _WRONG;
     }
 
-    public String questionThree() {
+    protected String questionThree() {
         CheckBox checkBox1 =
                 (CheckBox) findViewById(R.id.checkbox_view_one);
         CheckBox checkBox2 =
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         return _checkForRightAnswerQuestionThree + _WRONG;
     }
 
-    public String questionFour() {
+    protected String questionFour() {
         EditText answerFourEditTextView =
                 (EditText) findViewById(R.id.answer_four_edit_text_view);
         String receivedAnswerFour =
@@ -92,12 +92,12 @@ public class MainActivity extends AppCompatActivity {
         return _checkForRightAnswerQuestionFour + _WRONG;
     }
 
-    public String setAnswer( String ans) {
+    protected String setAnswer( String ans) {
         this._answer = ans;
         return _answer;
     }
 
-    public void printResultsToScreen(String results) {
+    protected void printResultsToScreen(String results) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_LONG;
         Toast toast =
