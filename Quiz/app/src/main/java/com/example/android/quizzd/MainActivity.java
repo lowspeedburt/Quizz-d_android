@@ -32,14 +32,11 @@ public class MainActivity extends AppCompatActivity {
     public void submitResults(View view) {
         EditText nameEditTextView = (EditText) findViewById(R.id.name_edit_text_view);
         String customerName = nameEditTextView.getText().toString();
-
-        String results = customerName
+        printResultsToScreen(customerName
                 + "\n" + questionOne()
                 + "\n" + questionTwo()
                 + "\n" + questionThree()
-                + "\n" + questionFour();
-
-        printResultsToScreen(results);
+                + "\n" + questionFour());
     }
 
     public String questionOne() {
